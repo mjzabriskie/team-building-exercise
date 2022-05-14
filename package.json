@@ -1,0 +1,28 @@
+{
+  "name": "team-building-exercise",
+  "version": "1.0.0",
+  "description": "An application to take user input, and then build a team directory website.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjzabriskie/team-building-exercise.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjzabriskie/team-building-exercise/issues"
+  },
+  "homepage": "https://github.com/mjzabriskie/team-building-exercise#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
