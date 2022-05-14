@@ -8,21 +8,29 @@ test('creates an Employee object', () => {
     expect(employee.email).toBe('zabriskie.m@gmail.com');
 });
 
-// test("gets enemy's health value", () => {
-//     const enemy = new Enemy('goblin', 'sword');
+test("gets employee's name", () => {
+    const employee = new Employee('Mark', '199622', 'zabriskie.m@gmail.com');
 
-//     expect(enemy.getHealth()).toEqual(expect.stringContaining(enemy.health.toString()));
-// });
+    expect(employee.getName()).toEqual(expect.stringContaining(employee.name));
+});
 
-// test('checks if enemy is alive or not', () => {
-//     const enemy = new Enemy('goblin', 'sword');
+test("get's employee's id", () => {
+    const employee = new Employee('Mark', '199622', 'zabriskie.m@gmail.com');
 
-//     expect(enemy.isAlive()).toBeTruthy();
+    expect(employee.getId()).toEqual(expect.stringContaining(employee.id));
+});
 
-//     enemy.health = 0;
+test("get's employee's email", () => {
+    const employee = new Employee('Mark', '199622', 'zabriskie.m@gmail.com');
 
-//     expect(enemy.isAlive()).toBeFalsy();
-// });
+    expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email));
+});
+
+test("get's employee's role", () => {
+    const employee = new Employee('Mark', '199622', 'zabriskie.m@gmail.com');
+
+    expect(employee.getRole()).toEqual(expect.stringContaining(employee.constructor.name));
+});
 
 // test("subtracts from enemy's health", () => {
 //     const enemy = new Enemy('goblin', 'sword');
