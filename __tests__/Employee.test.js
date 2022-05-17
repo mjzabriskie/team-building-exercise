@@ -29,33 +29,5 @@ test("get's employee's email", () => {
 test("get's employee's role", () => {
     const employee = new Employee('Mark', '199622', 'zabriskie.m@gmail.com');
 
-    expect(employee.getRole()).toEqual(expect.stringContaining(employee.constructor.name));
+    expect(employee.getRole()).toEqual(expect.stringContaining("Employee"));
 });
-
-// test("subtracts from enemy's health", () => {
-//     const enemy = new Enemy('goblin', 'sword');
-//     const oldHealth = enemy.health;
-
-//     enemy.reduceHealth(5);
-
-//     expect(enemy.health).toBe(oldHealth - 5);
-
-//     enemy.reduceHealth(99999);
-
-//     expect(enemy.health).toBe(0);
-// });
-
-// test("gets enemy's attack value", () => {
-//     const enemy = new Enemy('goblin', 'sword');
-//     enemy.strength = 10;
-
-//     expect(enemy.getAttackValue()).toBeGreaterThanOrEqual(5);
-//     expect(enemy.getAttackValue()).toBeLessThanOrEqual(15);
-// });
-
-// test('gets a description of the enemy', () => {
-//     const enemy = new Enemy('goblin', 'sword');
-
-//     expect(enemy.getDescription()).toEqual(expect.stringContaining('goblin'));
-//     expect(enemy.getDescription()).toEqual(expect.stringContaining('sword'));
-// });

@@ -13,7 +13,7 @@ test("gets manager's office number", () => {
 });
 
 test("gets manager's role", () => {
-    const manager = new Manager('56');
+    const manager = new Manager();
 
     expect(manager.getRole()).toBe('Manager');
 })
