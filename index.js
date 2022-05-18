@@ -1,7 +1,32 @@
 const inquirer = require("inquirer");
 const { writeFile, copyFile } = require("./utils/generate-site.js");
-const generatePage = require("./src/page-template");
+const { generateHTML } = require("./src/page-template");
 const ListPrompt = require("inquirer/lib/prompts/list");
+
+const testObj =
+{
+    managerName: 'Zoey',
+    managerId: 'f',
+    managerEmail: 'f@g.co',
+    officeNumber: 'd',
+    employees: [
+        {
+          employeeType: 'Engineer',
+          engineerName: 'Bucky',
+          engineerId: '111',
+          engineerEmail: 'zabr@gmail.com',
+          github: 'mjzabriskie'
+        },
+        {
+          employeeType: 'Intern',
+          internName: 'Haney',
+          internId: '29',
+          internEmail: 'fso@gmail.com',
+          school: 'BYU'
+        }
+      ]
+  };
+
 
 const promptUser = () => {
   return inquirer.prompt([
@@ -60,25 +85,6 @@ const promptUser = () => {
           }
         },
     }
-    // {
-    //   type: "confirm",
-    //   name: "confirmAbout",
-    //   message:
-    //     'Would you like to enter some information about yourself for an "About" section?',
-    //   default: true,
-    // },
-    // {
-    //   type: "input",
-    //   name: "about",
-    //   message: "Provide some information about yourself:",
-    //   when: ({ confirmAbout }) => {
-    //     if (confirmAbout) {
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   },
-    // }
   ]);
 };
 
@@ -273,7 +279,7 @@ Add a New Employee
         employeeData.employees.push(specificEmployee);
         return promptEmployee(employeeData);
       } else {
-        return console.log(employeeData);
+        return employeeData;
       }
     });
 };
@@ -281,7 +287,7 @@ Add a New Employee
 promptUser()
   .then(promptEmployee)
   .then((employeeData) => {
-    return generatePage(employeeData);
+    return generateHTML(employeeData);
   })
   .then((pageHTML) => writeFile(pageHTML))
   .then((writeFileResponse) => {
