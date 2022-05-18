@@ -37,8 +37,14 @@ const promptUser = () => {
         message: "Enter the manager's email (Required)",
         validate: function(email)
         {
-            // Regex mail check (return true if valid mail)
-            return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+            let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+            if(regex.test(email)) {
+              return true;
+            } else {
+                console.log(`
+                Not a valid email, try again`);
+                return false;
+            }
         }
     },
     {
@@ -148,8 +154,14 @@ Add a New Employee
             },
               validate: function(email)
               {
-                  // Regex mail check (return true if valid mail)
-                  return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+                let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+                if(regex.test(email)) {
+                  return true;
+                } else {
+                    console.log(`
+                    Not a valid email, try again`);
+                    return false;
+                }
               }
           },
           {
@@ -171,14 +183,97 @@ Add a New Employee
                   return false;
                 }
               },
+          },
+          {
+            type: "input",
+            name: "internName",
+            message: "Enter the intern's name (Required)",
+            when: ({ employeeType }) => {
+                if (employeeType === "Intern") {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+            validate: (nameInput) => {
+              if (nameInput) {
+                return true;
+              } else {
+                console.log("Please enter the intern's name");
+                return false;
+              }
+            }
+          },
+          {
+            type: "input",
+            name: "internId",
+            message: "Enter the intern's employee ID (Required)",
+            when: ({ employeeType }) => {
+                if (employeeType === "Intern") {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+            validate: (idInput) => {
+              if (idInput) {
+                return true;
+              } else {
+                console.log("Please enter the intern's employee ID");
+                return false;
+              }
+            },
+          },
+          {
+              type: "input",
+              name: "internEmail",
+              message: "Enter the intern's email (Required)",
+              when: ({ employeeType }) => {
+                if (employeeType === "Intern") {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+              validate: function(email)
+              {
+                let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+                if(regex.test(email)) {
+                  return true;
+                } else {
+                    console.log(`
+                    Not a valid email, try again`)
+                    return false;
+                }
+              }
+          },
+          {
+              type: "input",
+              name: "school",
+              message: "Enter the intern's school name (Required)",
+              when: ({ employeeType }) => {
+                if (employeeType === "Intern") {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+              validate: (schoolInput) => {
+                if (schoolInput) {
+                  return true;
+                } else {
+                  console.log("Please enter the intern's school name");
+                  return false;
+                }
+              },
           }
     ])
     .then((specificEmployee) => {
-      employeeData.employees.push(specificEmployee);
       if (specificEmployee.employeeType !== "None") {
+        employeeData.employees.push(specificEmployee);
         return promptEmployee(employeeData);
       } else {
-        return employeeData;
+        return console.log(employeeData);
       }
     });
 };
