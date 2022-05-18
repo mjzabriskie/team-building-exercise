@@ -60,17 +60,17 @@ const promptUser = () => {
         type: "input",
         name: "managerEmail",
         message: "Enter the manager's email (Required)",
-        validate: function(email)
-        {
-            let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
-            if(regex.test(email)) {
-              return true;
-            } else {
-                console.log(`
-                Not a valid email, try again`);
-                return false;
-            }
-        }
+        // validate: function(email)
+        // {
+        //     let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+        //     if(regex.test(email)) {
+        //       return true;
+        //     } else {
+        //         console.log(`
+        //         Not a valid email, try again`);
+        //         return false;
+        //     }
+        // }
     },
     {
         type: "input",
@@ -83,7 +83,7 @@ const promptUser = () => {
             console.log("Please enter the manager's office number");
             return false;
           }
-        },
+        }
     }
   ]);
 };
@@ -158,17 +158,17 @@ Add a New Employee
                     return false;
                 }
             },
-              validate: function(email)
-              {
-                let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
-                if(regex.test(email)) {
-                  return true;
-                } else {
-                    console.log(`
-                    Not a valid email, try again`);
-                    return false;
-                }
-              }
+            //   validate: function(email)
+            //   {
+            //     let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+            //     if(regex.test(email)) {
+            //       return true;
+            //     } else {
+            //         console.log(`
+            //         Not a valid email, try again`);
+            //         return false;
+            //     }
+            //   }
           },
           {
               type: "input",
@@ -241,17 +241,17 @@ Add a New Employee
                     return false;
                 }
             },
-              validate: function(email)
-              {
-                let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
-                if(regex.test(email)) {
-                  return true;
-                } else {
-                    console.log(`
-                    Not a valid email, try again`)
-                    return false;
-                }
-              }
+            //   validate: function(email)
+            //   {
+            //     let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+            //     if(regex.test(email)) {
+            //       return true;
+            //     } else {
+            //         console.log(`
+            //         Not a valid email, try again`)
+            //         return false;
+            //     }
+            //   }
           },
           {
               type: "input",
