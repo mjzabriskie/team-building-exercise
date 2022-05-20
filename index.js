@@ -5,31 +5,7 @@ const { generateHTML } = require("./src/page-template");
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
 
 // registers max-length node with inquirer
-inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
-
-const testObj =
-{
-    managerName: 'Zoey',
-    managerId: 'f',
-    managerEmail: 'f@g.co',
-    officeNumber: 'd',
-    employees: [
-        {
-          employeeType: 'Engineer',
-          engineerName: 'Bucky',
-          engineerId: '111',
-          engineerEmail: 'zabr@gmail.com',
-          github: 'mjzabriskie'
-        },
-        {
-          employeeType: 'Intern',
-          internName: 'Haney',
-          internId: '29',
-          internEmail: 'fso@gmail.com',
-          school: 'BYU'
-        }
-      ]
-  };
+inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
 
 
 const promptUser = () => {
@@ -49,9 +25,10 @@ const promptUser = () => {
       },
     },
     {
-      type: "input",
+      type: "maxlength-input",
       name: "managerId",
       message: "Enter the manager's employee ID (Required)",
+      maxLength: 6,
       validate: (idInput) => {
         if (idInput) {
           return true;
@@ -62,9 +39,10 @@ const promptUser = () => {
       },
     },
     {
-        type: "input",
+        type: "maxlength-input",
         name: "managerEmail",
         message: "Enter the manager's email (Required)",
+        maxLength: 25,
         // validate: function(email)
         // {
         //     let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
@@ -78,9 +56,10 @@ const promptUser = () => {
         // }
     },
     {
-        type: "input",
+        type: "maxlength-input",
         name: "officeNumber",
         message: "Enter the manager's office number (Required)",
+        maxLength: 5,
         validate: (officeInput) => {
           if (officeInput) {
             return true;
@@ -113,9 +92,10 @@ Add a New Employee
             default: "None"
         },
         {
-            type: "input",
+            type: "maxlength-input",
             name: "engineerName",
             message: "Enter the engineer's name (Required)",
+            maxLength: 45,
             when: ({ employeeType }) => {
                 if (employeeType === "Engineer") {
                     return true;
@@ -133,9 +113,10 @@ Add a New Employee
             }
           },
           {
-            type: "input",
+            type: "maxlength-input",
             name: "engineerId",
             message: "Enter the engineer's employee ID (Required)",
+            maxLength: 6,
             when: ({ employeeType }) => {
                 if (employeeType === "Engineer") {
                     return true;
@@ -153,9 +134,10 @@ Add a New Employee
             },
           },
           {
-              type: "input",
+              type: "maxlength-input",
               name: "engineerEmail",
               message: "Enter the engineer's email (Required)",
+              maxLength: 25,
               when: ({ employeeType }) => {
                 if (employeeType === "Engineer") {
                     return true;
@@ -176,9 +158,10 @@ Add a New Employee
             //   }
           },
           {
-              type: "input",
+              type: "maxlength-input",
               name: "github",
               message: "Enter the engineer's github name (Required)",
+              maxLength: 25,
               when: ({ employeeType }) => {
                 if (employeeType === "Engineer") {
                     return true;
@@ -196,9 +179,10 @@ Add a New Employee
               },
           },
           {
-            type: "input",
+            type: "maxlength-input",
             name: "internName",
             message: "Enter the intern's name (Required)",
+            maxLength: 45,
             when: ({ employeeType }) => {
                 if (employeeType === "Intern") {
                     return true;
@@ -216,9 +200,10 @@ Add a New Employee
             }
           },
           {
-            type: "input",
+            type: "maxlength-input",
             name: "internId",
             message: "Enter the intern's employee ID (Required)",
+            maxLength: 6,
             when: ({ employeeType }) => {
                 if (employeeType === "Intern") {
                     return true;
@@ -236,9 +221,10 @@ Add a New Employee
             },
           },
           {
-              type: "input",
+              type: "maxlength-input",
               name: "internEmail",
               message: "Enter the intern's email (Required)",
+              maxLength: 25,
               when: ({ employeeType }) => {
                 if (employeeType === "Intern") {
                     return true;
@@ -259,9 +245,10 @@ Add a New Employee
             //   }
           },
           {
-              type: "input",
+              type: "maxlength-input",
               name: "school",
               message: "Enter the intern's school name (Required)",
+              maxLength: 45,
               when: ({ employeeType }) => {
                 if (employeeType === "Intern") {
                     return true;

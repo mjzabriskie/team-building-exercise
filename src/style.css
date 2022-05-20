@@ -1,4 +1,73 @@
+:root {
+    --primary: #17A2B8;
+    --secondary: #1493C2;
+    --tertiary: #4A80C1;
+    --quaternary: #7669B1;
+    --quinary: #944F91;
+    --senary: #A13666;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+header {
+    background-image: linear-gradient(to right top, #17a2b8, #228ec3, #6175bb, #8e569a, #a13666);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    color: white;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 500;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+h3 {
+    font-style: italic;
+}
+
 .card {
     min-width: 300px;
     max-width: 300px;
+    box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.card-sec {
+    background-color: var(--secondary);
+}
+
+.card-tert {
+    background-color: var(--tertiary);
+}
+
+.card-quat {
+    background-color: var(--quaternary);
+}
+
+.card-quin {
+    background-color: var(--quinary);
+}
+
+.card-sen {
+    background-color: var(--senary);
 }

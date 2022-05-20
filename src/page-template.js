@@ -1,12 +1,36 @@
 const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
+let colorCounter = 1;
+
+const colorCarousel = () => {
+    if (colorCounter === 1) {
+        colorCounter++;
+        return `card-sen`;
+    }
+    if (colorCounter === 2) {
+        colorCounter++;
+        return `card-quin`;
+    }
+    if (colorCounter === 3) {
+        colorCounter++;
+        return `card-quat`;
+    }
+    if (colorCounter === 4) {
+        colorCounter++;
+        return `card-tert`;
+    }
+    if (colorCounter === 5) {
+        colorCounter = 1;
+        return `card-sec`;
+    }
+}
 
 //create the manager card
 const generateManager = managerInfo => {
   const manager = new Manager(managerInfo.managerName, managerInfo.managerId, managerInfo.managerEmail, managerInfo.officeNumber);
   return `<div class="card m-3">
-            <div class="card-header">
+            <div class="card-header ${colorCarousel()}">
                 <h2 class="card-title">${manager.getName()}</h2>
                 <h3 class="card-subtitle">${manager.getRole()}</h3>
             </div>
@@ -45,7 +69,7 @@ const generateEmployees = employeeArr => {
                 var special = `School: ${employee.getSchool()}`;
             }
             return `<div class="card m-3">
-                    <div class="card-header">
+                    <div class="card-header ${colorCarousel()}">
                         <h2 class="card-title">${employee.getName()}</h2>
                         <h3 class="card-subtitle">${employee.getRole()}</h3>
                     </div>
@@ -78,14 +102,14 @@ const generateHTML = (templateData) => {
       <title>Team Generator</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
     <header class="jumbotron d-flex justify-content-center">
         <div>
-            <h1 class="display-4">My Team</h1>
+            <h1>My Team</h1>
         </div>
     </header>
 
@@ -94,8 +118,8 @@ const generateHTML = (templateData) => {
         ${generateEmployees(templateData.employees)}
     </main>
 
-    <footer class="mt-3">
-        <h4 class="d-flex justify-content-center">&copy; ${new Date().getFullYear()} by ${templateData.managerName}</h4>
+    <footer class="d-flex justify-content-center align-items-center mt-4 mb-4">
+        <h4>&copy; ${new Date().getFullYear()} by ${templateData.managerName}</h4>
     </footer>
   </body>
   </html>
