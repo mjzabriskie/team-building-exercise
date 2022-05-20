@@ -11,7 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
 header {
     background-image: linear-gradient(to right top, #17a2b8, #228ec3, #6175bb, #8e569a, #a13666);
@@ -23,7 +23,9 @@ body {
     min-height: 100vh;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: white;
 }
 
@@ -43,8 +45,10 @@ h3 {
 .card {
     min-width: 300px;
     max-width: 300px;
-    box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+/* Utility Classes */
 
 .dont-break-out {
     word-break: break-all;

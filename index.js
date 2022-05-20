@@ -37,10 +37,9 @@ const promptUser = () => {
             },
         },
         {
-            type: "maxlength-input",
+            type: "input",
             name: "managerEmail",
             message: "Enter the manager's email (Required)",
-            maxLength: 35,
             validate: function (email) {
                 //basic validation to help get email in proper format
                 let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
@@ -132,10 +131,9 @@ Add a New Employee
                 },
             },
             {
-                type: "maxlength-input",
+                type: "input",
                 name: "engineerEmail",
                 message: "Enter the engineer's email (Required)",
-                maxLength: 35,
                 when: ({ employeeType }) => {
                     if (employeeType === "Engineer") {
                         return true;
@@ -218,10 +216,9 @@ Add a New Employee
                 },
             },
             {
-                type: "maxlength-input",
+                type: "input",
                 name: "internEmail",
                 message: "Enter the intern's email (Required)",
-                maxLength: 35,
                 when: ({ employeeType }) => {
                     if (employeeType === "Intern") {
                         return true;
