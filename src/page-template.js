@@ -5,27 +5,25 @@ const Intern = require('../lib/Intern');
 //create the manager card
 const generateManager = managerInfo => {
   const manager = new Manager(managerInfo.managerName, managerInfo.managerId, managerInfo.managerEmail, managerInfo.officeNumber);
-  return `
-<div class="card m-3">
-    <div class="card-header">
-        <h2 class="card-title">${manager.getName()}</h2>
-        <h3 class="card-subtitle">${manager.getRole()}</h3>
-    </div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <tr>
-                <td>ID: ${manager.getId()}</td>
-            </tr>
-            <tr>
-                <td>Email: <a href="mailto: ${manager.getEmail()}">${manager.getEmail()}</a></td>
-            </tr>
-            <tr>
-                <td>Office number: ${manager.getOfficeNumber()}</td>
-            </tr>
-        </table>
-    </div>
-</div>
-  `;
+  return `<div class="card m-3">
+            <div class="card-header">
+                <h2 class="card-title">${manager.getName()}</h2>
+                <h3 class="card-subtitle">${manager.getRole()}</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>ID: ${manager.getId()}</td>
+                    </tr>
+                    <tr>
+                        <td>Email: <a href="mailto: ${manager.getEmail()}">${manager.getEmail()}</a></td>
+                    </tr>
+                    <tr>
+                        <td>Office number: ${manager.getOfficeNumber()}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>`;
 };
 
 const generateEmployees = employeeArr => {
@@ -46,29 +44,25 @@ const generateEmployees = employeeArr => {
             } else if (employee.getRole() === "Intern") {
                 var special = `School: ${employee.getSchool()}`;
             }
-            return `
-        <div class="card m-3">
-            <div class="card-header">
-                <h2 class="card-title">${employee.getName()}</h2>
-                <h3 class="card-subtitle">${employee.getRole()}</h3>
-            </div>
-            <div class="card-body">
-                <table class="table table-striped">
-                    <tr>
-                        <td>ID: ${employee.getId()}</td>
-                    </tr>
-                    <tr>
-                        <td>Email: <a href="mailto: ${employee.getEmail()}">${employee.getEmail()}</a></td>
-                    </tr>
-                    <tr>
-                        <td>${special}</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-            `
-        }).join('')}
-  `;
+            return `<div class="card m-3">
+                    <div class="card-header">
+                        <h2 class="card-title">${employee.getName()}</h2>
+                        <h3 class="card-subtitle">${employee.getRole()}</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>ID: ${employee.getId()}</td>
+                            </tr>
+                            <tr>
+                                <td>Email: <a href="mailto: ${employee.getEmail()}">${employee.getEmail()}</a></td>
+                            </tr>
+                            <tr>
+                                <td>${special}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>`}).join('')}`;
 }
 
 const generateHTML = (templateData) => {
@@ -100,7 +94,7 @@ const generateHTML = (templateData) => {
         ${generateEmployees(templateData.employees)}
     </main>
 
-    <footer>
+    <footer class="mt-3">
         <h4 class="d-flex justify-content-center">&copy; ${new Date().getFullYear()} by ${templateData.managerName}</h4>
     </footer>
   </body>

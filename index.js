@@ -1,7 +1,11 @@
 const inquirer = require("inquirer");
 const { writeFile, copyFile } = require("./utils/generate-site.js");
 const { generateHTML } = require("./src/page-template");
-const ListPrompt = require("inquirer/lib/prompts/list");
+//const ListPrompt = require("inquirer/lib/prompts/list");
+const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt')
+
+// registers max-length node with inquirer
+inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 
 const testObj =
 {
@@ -31,9 +35,10 @@ const testObj =
 const promptUser = () => {
   return inquirer.prompt([
     {
-      type: "input",
+      type: "maxlength-input",
       name: "managerName",
       message: "Enter the manager's name (Required)",
+      maxLength: 45,
       validate: (nameInput) => {
         if (nameInput) {
           return true;

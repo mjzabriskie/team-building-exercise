@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/mjzabriskie/team-building-exercise#readme",
   "dependencies": {
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "inquirer-maxlength-input-prompt": "^1.0.2"
   },
   "devDependencies": {
     "jest": "^28.1.0"
