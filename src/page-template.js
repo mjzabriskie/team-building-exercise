@@ -1,8 +1,11 @@
 const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
+
+//counter to let the card headers all cycle through different colors
 let colorCounter = 1;
 
+//function that dynamically changes the background color of the card headers
 const colorCarousel = () => {
     if (colorCounter === 1) {
         colorCounter++;
@@ -32,7 +35,7 @@ const generateManager = managerInfo => {
   return `<div class="card m-3">
             <div class="card-header ${colorCarousel()}">
                 <h2 class="card-title">${manager.getName()}</h2>
-                <h3 class="card-subtitle">${manager.getRole()}</h3>
+                <h3 class="card-subtitle"><i class="fa-solid fa-mug-hot"></i>  ${manager.getRole()}</h3>
             </div>
             <div class="card-body">
                 <table class="table table-striped">
@@ -40,7 +43,7 @@ const generateManager = managerInfo => {
                         <td>ID: ${manager.getId()}</td>
                     </tr>
                     <tr>
-                        <td>Email: <a href="mailto: ${manager.getEmail()}">${manager.getEmail()}</a></td>
+                        <td>Email: <a href="mailto: ${manager.getEmail()}" class="dont-break-out">${manager.getEmail()}</a></td>
                     </tr>
                     <tr>
                         <td>Office number: ${manager.getOfficeNumber()}</td>
@@ -50,10 +53,14 @@ const generateManager = managerInfo => {
         </div>`;
 };
 
+//create the employees that make up the rest of the team
 const generateEmployees = employeeArr => {
+    //Returns empty string if manager enters in no other employees
     if(!employeeArr) {
         return '';
     }
+    //Takes the array of employee objects and turns it into an array
+    //of specialized employee Objects.
     const specializedArr = employeeArr.map(employee => {
         if (employee.employeeType === 'Engineer') {
             return new Engineer(employee.engineerName, employee.engineerId, employee.engineerEmail, employee.github);
@@ -61,36 +68,43 @@ const generateEmployees = employeeArr => {
             return new Intern(employee.internName, employee.internId, employee.internEmail, employee.school);
         }
     });
-  return `
-        ${specializedArr.map( employee => {
+    //Returns the specializedArr as a single string to be placed in the html
+  return `${specializedArr.map( employee => {
+            //special dynamically populates the unique field for engineers and interns
+            //employeeIcon dynamically populates the correct icon for the role.
+            let special = ``;
+            let employeeIcon = ``;
             if(employee.getRole() === 'Engineer'){
-                var special = `GitHub: <a href="https://github.com/${employee.getGithub()}" target="_blank">${employee.getGithub()}</a>`;
+                special = `GitHub: <a href="https://github.com/${employee.getGithub()}" target="_blank" class="dont-break-out">${employee.getGithub()}</a>`;
+                employeeIcon = `<i class="fa-solid fa-glasses"></i>  `;
             } else if (employee.getRole() === "Intern") {
-                var special = `School: ${employee.getSchool()}`;
+                special = `School: ${employee.getSchool()}`;
+                employeeIcon = `<i class="fa-solid fa-user-graduate"></i>  `;
             }
-            return `<div class="card m-3">
-                    <div class="card-header ${colorCarousel()}">
-                        <h2 class="card-title">${employee.getName()}</h2>
-                        <h3 class="card-subtitle">${employee.getRole()}</h3>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-striped">
-                            <tr>
-                                <td>ID: ${employee.getId()}</td>
-                            </tr>
-                            <tr>
-                                <td>Email: <a href="mailto: ${employee.getEmail()}">${employee.getEmail()}</a></td>
-                            </tr>
-                            <tr>
-                                <td>${special}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>`}).join('')}`;
+    return `
+        <div class="card m-3">
+            <div class="card-header ${colorCarousel()}">
+                <h2 class="card-title">${employee.getName()}</h2>
+                <h3 class="card-subtitle">${employeeIcon}${employee.getRole()}</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>ID: ${employee.getId()}</td>
+                    </tr>
+                    <tr>
+                        <td>Email: <a href="mailto: ${employee.getEmail()}" class="dont-break-out">${employee.getEmail()}</a></td>
+                    </tr>
+                    <tr>
+                        <td>${special}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>`}).join('')}`;
 }
 
+//generates the main html document
 const generateHTML = (templateData) => {
-  //destructure page data by section
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -117,10 +131,8 @@ const generateHTML = (templateData) => {
         ${generateManager(templateData)}
         ${generateEmployees(templateData.employees)}
     </main>
-
-    <footer class="d-flex justify-content-center align-items-center mt-4 mb-4">
-        <h4>&copy; ${new Date().getFullYear()} by ${templateData.managerName}</h4>
-    </footer>
+    
+    <script src="https://kit.fontawesome.com/8286a8c819.js" crossorigin="anonymous"></script>
   </body>
   </html>
   `;
